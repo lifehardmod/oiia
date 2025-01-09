@@ -22,7 +22,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 </head>
 <body>
-    <img src='/oiiacat.png' class="main" id="oiia">
+    <img src='oiiacat.png' class="main" id="oiia">
 
     <script>
 
@@ -31,13 +31,13 @@
         sound.loop = true;
 
         function changeImageOnHold() {
-            img.src = './spin.gif';
+            img.src = 'spin.gif';
             sound.currentTime = 0;
             sound.play();      
         }
 
         function resetImage() {
-            img.src = '/oiiacat.png';
+            img.src = 'oiiacat.png';
             sound.pause();
             sound.currentTime = 0;
         }
