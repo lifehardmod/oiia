@@ -10,8 +10,10 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 80vh;
-    height: 80vh;
+    width: 70vh;
+    height: 70vh;
+
+    
     background-color: #ffffff;
     -webkit-user-drag: none; /* Chrome, Safari */
     -khtml-user-drag: none;  /* Konqueror */
@@ -31,10 +33,10 @@
     
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta name='viewport' content='width=device-width, initial-scale=1' user-scalable=no>
 </head>
 <body>
-    <img src='oiiacat.png' class="main" id="oiia">
+    <img src='oiiacat.png' class="main" id="oiia" oncontextmenu="return false;">
 
     <script>
 
@@ -45,6 +47,19 @@
         img.addEventListener('contextmenu', function(e) {
             e.preventDefault();
         });
+
+        img.addEventListener('touchstart', function(e) {
+            e.preventDefault(); // 기본 동작 방지
+        }, { passive: false });
+
+        img.addEventListener('touchmove', function(e) {
+            e.preventDefault(); // 터치 이동 시 기본 동작 방지
+        }, { passive: false });
+
+        img.addEventListener('touchend', function(e) {
+            e.preventDefault(); // 터치 종료 시 기본 동작 방지
+        }, { passive: false });
+
         
         function changeImageOnHold() {
             img.src = 'spin.gif';
@@ -53,7 +68,7 @@
         }
 
         function resetImage() {
-            img.src = '/oiiacat.png';
+            img.src = 'oiiacat.png';
             sound.pause();
             sound.currentTime = 0;
         }
@@ -70,7 +85,7 @@
         document.addEventListener('touchcancel', resetImage);
 
         sound.preload = 'auto';
-        img.preload = 'auto';
+
     </script>
 </body>
 </html>
