@@ -13,6 +13,18 @@
     width: 80vh;
     height: 80vh;
     background-color: #ffffff;
+    -webkit-user-drag: none; /* Chrome, Safari */
+    -khtml-user-drag: none;  /* Konqueror */
+    -moz-user-drag: none;    /* Firefox */
+    -o-user-drag: none;      /* Opera */
+    user-drag: none;         /* 표준 문법 */
+    
+    -webkit-user-select: none; /* Chrome, Safari */
+    -khtml-user-select: none;  /* Konqueror */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* Internet Explorer/Edge */
+    user-select: none;         /* 표준 문법 */
+
 }
     </style>
 <head>
@@ -30,6 +42,10 @@
         const sound = new Audio('sound.mp3');
         sound.loop = true;
 
+        img.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+        
         function changeImageOnHold() {
             img.src = 'spin.gif';
             sound.currentTime = 0;
@@ -41,6 +57,8 @@
             sound.pause();
             sound.currentTime = 0;
         }
+
+        
 
         document.addEventListener('mousedown', changeImageOnHold);
         document.addEventListener('mouseup', resetImage);
